@@ -80,22 +80,9 @@ in all capitals, as shown here.
 
 A brief summary of the guidance provided in the existing DNS
 specification for the use of QDCOUNT can be found in {{Survey}}.
-
-There is no text in {{!RFC1035}} that describes how other parameters
-in the DNS message such as AA, RCODE should be interpreted in the
-case where a message includes more than one question. An originator
-of a query with QDCOUNT > 1 can have no expectations of how it will
-be processed, and the receiver of a response with QDCOUNT > 1 has
-no guidance for how it should be interpreted.
-
-The allowable values of QDCOUNT seem to be clearly specified for
-OPCODE = 4 (NOTIFY), OPCODE = 5 (UPDATE) and OPCODE = 6 (DNS Stateful
-Operations, DSO). OPCODE = 1 (IQUERY) is obsolete and OPCODE = 2
-(STATUS) is not specified. OPCODE = 3 is reserved.
-
-The allowable values of QDCOUNT are specified in {{?RFC1035}} without
-the clarity of normative language, and this looseness of language
-results in some ambiguity.
+While the specification is clear in many cases, in the specific
+case of OPCODE = 0 (QUERY) there is some ambiguity which this
+document aims to eliminate.
 
 # Updates to RFC 1035
 
@@ -206,4 +193,22 @@ DNS Stateful Operations {{?RFC8490}} (DSO - OpCode 6) attempts to
 preserve compatibility with the standard DNS 12 octet header, and
 does so by requiring that all four of the section count values be
 set to zero.
+
+## Conclusion
+
+There is no text in {{!RFC1035}} that describes how other parameters
+in the DNS message such as AA, RCODE should be interpreted in the
+case where a message includes more than one question. An originator
+of a query with QDCOUNT > 1 can have no expectations of how it will
+be processed, and the receiver of a response with QDCOUNT > 1 has
+no guidance for how it should be interpreted.
+
+The allowable values of QDCOUNT seem to be clearly specified for
+OPCODE = 4 (NOTIFY), OPCODE = 5 (UPDATE) and OPCODE = 6 (DNS Stateful
+Operations, DSO). OPCODE = 1 (IQUERY) is obsolete and OPCODE = 2
+(STATUS) is not specified. OPCODE = 3 is reserved.
+
+However, the allowable values of QDCOUNT for OPCODE = 0 (QUERY) are
+specified in {{?RFC1035}} without the clarity of normative language,
+and this looseness of language results in some ambiguity.
 
