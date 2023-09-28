@@ -116,7 +116,8 @@ This document has no IANA actions.
 
 The clarifications in this document were prompted by questions posed
 by Ted Lemon, which reminded the authors of earlier, similar questions
-and motivated them to pick up their pens. Ondrej Sury provided
+and motivated them to pick up their pens. Ondrej Sury, Warren Kumari,
+Peter Thomassen, Mark Andrews, Lars-Johan Liman and Jim Reid provided
 useful feedback to early drafts.
 
 --- back
