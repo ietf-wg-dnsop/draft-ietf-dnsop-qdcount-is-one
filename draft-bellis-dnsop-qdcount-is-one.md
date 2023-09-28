@@ -180,6 +180,8 @@ the response message MUST be set to 1 (FORMERR).
 Firewalls that process DNS messages in order to eliminate unwanted
 traffic SHOULD treat messages with OPCODE = 0 and QDCOUNT > 1 as
 malformed traffic.  See Section 4 of {{?RFC8906}} for further guidance.
+Such firewalls MUST NOT treat messages with OPCODE = 0 and QDCOUNT = 0
+as malformed.
 
 # Security Considerations
 
@@ -191,5 +193,12 @@ hygiene.
 # IANA Considerations
 
 This document has no IANA actions.
+
+# Acknowledgements
+
+The clarifications in this document were prompted by questions posed
+by Ted Lemon, which reminded the authors of earlier, similar questions
+and motivated them to pick up their pens. Ondrej Sury provided
+useful feedback to early drafts.
 
 --- back
