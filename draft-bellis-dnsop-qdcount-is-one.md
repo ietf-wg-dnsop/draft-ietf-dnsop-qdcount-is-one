@@ -78,8 +78,67 @@ in all capitals, as shown here.
 
 # QDCOUNT is (usually) One
 
-The following brief survey provides some commentary on the use of
-QDCOUNT in the written DNS specification.
+A brief summary of the guidance provided in the existing DNS
+specification for the use of QDCOUNT can be found in {{Survey}}.
+
+There is no text in {{!RFC1035}} that describes how other
+parameters in the DNS message such as AA, RCODE should be interpreted
+in the case where a message includes more than one question. An
+originator of a query with QDCOUNT > 1 can have no expectations of
+how it will be processed, and the receiver of a response with QDCOUNT
+> 1 has no guidance for how it should be interpreted.
+
+The allowable values of QDCOUNT seem to be clearly specified for
+OPCODE = 4 (NOTIFY), OPCODE = 5 (UPDATE) and OPCODE = 6 (DNS Stateful
+Operations, DSO). OPCODE = 1 (IQUERY) is obsolete and OPCODE = 2
+(STATUS) is not specified. OPCODE = 3 is reserved.
+
+The allowable values of QDCOUNT are specified in {{?RFC1035}} without
+the clarity of normative language, and this looseness of language
+results in some ambiguity.
+
+# Updates to RFC 1035
+
+A DNS message with OPCODE = 0 (QUERY) MUST NOT include a QDCOUNT
+parameter whose value is greater than 1. It follows that the Question
+Section of a DNS message with OPCODE = 0 MUST NOT contain more than
+one question.
+
+A DNS message with OPCODE = 0 (QUERY) and QDCOUNT > 1 MUST be treated as
+an incorrectly-formatted message.  The value of the RCODE parameter in
+the response message MUST be set to 1 (FORMERR).
+
+Firewalls that process DNS messages in order to eliminate unwanted
+traffic SHOULD treat messages with OPCODE = 0 and QDCOUNT > 1 as
+malformed traffic.  See Section 4 of {{?RFC8906}} for further guidance.
+Such firewalls MUST NOT treat messages with OPCODE = 0 and QDCOUNT = 0
+as malformed.
+
+# Security Considerations
+
+This document clarifies the DNS specification and aims to improve
+interoperability between different DNS implementations. In general,
+the elimination of ambiguity seems well-aligned with security
+hygiene.
+
+# IANA Considerations
+
+This document has no IANA actions.
+
+# Acknowledgements
+
+The clarifications in this document were prompted by questions posed
+by Ted Lemon, which reminded the authors of earlier, similar questions
+and motivated them to pick up their pens. Ondrej Sury provided
+useful feedback to early drafts.
+
+--- back
+
+# Guidance for the use of QDCOUNT in the DNS Specification {#Survey}
+
+The DNS Specification provides some guidance about the values of
+QDCOUNT that are appropriate in various situations. A brief summary
+of this guidance is collated below.
 
 ## OPCODE = 0 (QUERY) and 1 (IQUERY)
 
@@ -148,57 +207,3 @@ preserve compatibility with the standard DNS 12 octet header, and
 does so by requiring that all four of the section count values be
 set to zero.
 
-## Conclusion
-
-There is no text in {{!RFC1035}} that describes how other
-parameters in the DNS message such as AA, RCODE should be interpreted
-in the case where a message includes more than one question. An
-originator of a query with QDCOUNT > 1 can have no expectations of
-how it will be processed, and the receiver of a response with QDCOUNT
-> 1 has no guidance for how it should be interpreted.
-
-The allowable values of QDCOUNT seem to be clearly specified for
-OPCODE = 4 (NOTIFY), OPCODE = 5 (UPDATE) and OPCODE = 6 (DNS Stateful
-Operations, DSO). OPCODE = 1 (IQUERY) is obsolete and OPCODE = 2
-(STATUS) is not specified. OPCODE = 3 is reserved.
-
-The allowable values of QDCOUNT are specified in {{?RFC1035}} without
-the clarity of normative language, and this looseness of language
-results in some ambiguity.
-
-# Updates to RFC 1035
-
-A DNS message with OPCODE = 0 (QUERY) MUST NOT include a QDCOUNT
-parameter whose value is greater than 1. It follows that the Question
-Section of a DNS message with OPCODE = 0 MUST NOT contain more than
-one question.
-
-A DNS message with OPCODE = 0 (QUERY) and QDCOUNT > 1 MUST be treated as
-an incorrectly-formatted message.  The value of the RCODE parameter in
-the response message MUST be set to 1 (FORMERR).
-
-Firewalls that process DNS messages in order to eliminate unwanted
-traffic SHOULD treat messages with OPCODE = 0 and QDCOUNT > 1 as
-malformed traffic.  See Section 4 of {{?RFC8906}} for further guidance.
-Such firewalls MUST NOT treat messages with OPCODE = 0 and QDCOUNT = 0
-as malformed.
-
-# Security Considerations
-
-This document clarifies the DNS specification and aims to improve
-interoperability between different DNS implementations. In general,
-the elimination of ambiguity seems well-aligned with security
-hygiene.
-
-# IANA Considerations
-
-This document has no IANA actions.
-
-# Acknowledgements
-
-The clarifications in this document were prompted by questions posed
-by Ted Lemon, which reminded the authors of earlier, similar questions
-and motivated them to pick up their pens. Ondrej Sury provided
-useful feedback to early drafts.
-
---- back
