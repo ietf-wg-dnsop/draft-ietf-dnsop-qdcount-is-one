@@ -147,7 +147,7 @@ OpCode was made obsolete in {{!RFC3425}}.
 
 In the absence of clearly expressed normative requirements, we rely
 on other text in {{!RFC1035}} that makes use of the definite article
-or other text that implies a singuar question and, by implication,
+or other text that implies a singular question and, by implication,
 QDCOUNT = 1.
 
 For example, Section 4.1:
