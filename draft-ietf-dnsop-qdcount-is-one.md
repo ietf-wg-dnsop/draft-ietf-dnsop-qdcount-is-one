@@ -1,6 +1,6 @@
 ---
 title: In the DNS, QDCOUNT is (usually) One
-docname: draft-ietf-dnsop-qdcount-is-one-00
+docname: draft-ietf-dnsop-qdcount-is-one-01
 updates: RFC1035
 
 submissiontype: IETF
@@ -97,9 +97,9 @@ in the response message MUST be set to 1 (FORMERR).
 
 Firewalls that process DNS messages in order to eliminate unwanted
 traffic SHOULD treat messages with OPCODE = 0 and QDCOUNT > 1 as
-malformed traffic.  See Section 4 of {{?RFC8906}} for further
-guidance.  Such firewalls MUST NOT treat messages with OPCODE = 0
-and QDCOUNT = 0 as malformed.
+malformed traffic and return a FORMERR response as described above.
+Such firewalls MUST NOT treat messages with OPCODE = 0 and QDCOUNT = 0
+as malformed.  See Section 4 of {{?RFC8906}} for further guidance.
 
 # Security Considerations
 
