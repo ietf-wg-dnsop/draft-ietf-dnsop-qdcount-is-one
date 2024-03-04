@@ -1,6 +1,6 @@
 ---
 title: In the DNS, QDCOUNT is (usually) One
-docname: draft-ietf-dnsop-qdcount-is-one-01
+docname: draft-ietf-dnsop-qdcount-is-one-02
 updates: RFC1035
 
 submissiontype: IETF
@@ -117,8 +117,8 @@ This document has no IANA actions.
 The clarifications in this document were prompted by questions posed
 by Ted Lemon, which reminded the authors of earlier, similar questions
 and motivated them to pick up their pens. Ondrej Sury, Warren Kumari,
-Peter Thomassen, Mark Andrews, Lars-Johan Liman and Jim Reid provided
-useful feedback to early drafts.
+Peter Thomassen, Mark Andrews, Lars-Johan Liman, Jim Reid and Niall
+O'Reilly provided useful feedback.
 
 --- back
 
@@ -167,8 +167,14 @@ and in Section 4.1.1. ("Header section format"):
 
 DNS Cookies {{?RFC7873}} in Section 5.4 allow a client to receive
 a valid Server Cookie without sending a specific question by sending
-a Query packet (OpCode 0) with QDCOUNT = 0, with the resulting
+a Query packet (OpCode = 0) with QDCOUNT = 0, with the resulting
 response also containing no question.
+
+DNS Zone Transfer Protocol (AXFR) {{?RFC5936}} in Section 2.2 allows
+an authoritative server optionally to send a response message
+(QR = 1) to a standard AXFR query (OpCode = 0, QTYPE=252) with
+QDCOUNT = 0 in the second or subsequent message of a multi-message
+response.
 
 ## OPCODE = 4 (NOTIFY)
 
