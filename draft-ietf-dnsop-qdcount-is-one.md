@@ -39,9 +39,10 @@ author:
 
 --- abstract
 
-This document updates RFC 1035 by clarifying the allowable values of the
-QDCOUNT parameter in DNS messages with OPCODE = 0 (QUERY) and specifies
-the required behaviour when values that are not allowed are encountered.
+This document updates RFC 1035 by constraining the allowed value of the
+QDCOUNT parameter in DNS messages with OPCODE = 0 (QUERY) to a maximum
+of one, and specifies the required behaviour when values that are not
+allowed are encountered.
 
 --- middle
 
