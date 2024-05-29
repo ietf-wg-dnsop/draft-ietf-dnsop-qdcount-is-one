@@ -1,6 +1,6 @@
 ---
 title: In the DNS, QDCOUNT is (usually) One
-docname: draft-ietf-dnsop-qdcount-is-one-02
+docname: draft-ietf-dnsop-qdcount-is-one-03
 updates: RFC1035
 
 submissiontype: IETF
@@ -39,9 +39,9 @@ author:
 
 --- abstract
 
-This document clarifies the allowable values of the QDCOUNT parameter
-in DNS messages with OPCODE = 0 (QUERY) and specifies the required
-behaviour when values that are not allowed are encountered.
+This document updates RFC 1035 by clarifying the allowable values of the
+QDCOUNT parameter in DNS messages with OPCODE = 0 (QUERY) and specifies
+the required behaviour when values that are not allowed are encountered.
 
 --- middle
 
@@ -139,11 +139,11 @@ QDCOUNT:
 
 > The section contains QDCOUNT (usually 1) entries
 
-The only documented exceptions within {{!RFC1035}} relate to the
-IQuery Opcode, where the request has "an empty question section"
-(QDCOUNT = 0), and "zero, one, or multiple domain names for the
-specified resource as QNAMEs in the question section". The IQuery
-OpCode was made obsolete in {{!RFC3425}}.
+The only documented exceptions within {{!RFC1035}} relate to the IQuery
+Opcode, where the request has "an empty question section" (QDCOUNT = 0),
+and the response has "zero, one, or multiple domain names for the
+specified resource as QNAMEs in the question section". The IQuery OpCode
+was made obsolete in {{!RFC3425}}.
 
 In the absence of clearly expressed normative requirements, we rely
 on other text in {{!RFC1035}} that makes use of the definite article

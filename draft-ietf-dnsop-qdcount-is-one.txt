@@ -6,17 +6,18 @@ DNSOP Working Group                                            R. Bellis
 Internet-Draft                                                       ISC
 Updates: RFC1035 (if approved)                                  J. Abley
 Intended status: Standards Track                              Cloudflare
-Expires: 5 September 2024                                   4 March 2024
+Expires: 30 November 2024                                    29 May 2024
 
 
                   In the DNS, QDCOUNT is (usually) One
-                   draft-ietf-dnsop-qdcount-is-one-02
+                   draft-ietf-dnsop-qdcount-is-one-03
 
 Abstract
 
-   This document clarifies the allowable values of the QDCOUNT parameter
-   in DNS messages with OPCODE = 0 (QUERY) and specifies the required
-   behaviour when values that are not allowed are encountered.
+   This document updates RFC 1035 by clarifying the allowable values of
+   the QDCOUNT parameter in DNS messages with OPCODE = 0 (QUERY) and
+   specifies the required behaviour when values that are not allowed are
+   encountered.
 
 Status of This Memo
 
@@ -33,7 +34,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2024.
+   This Internet-Draft will expire on 30 November 2024.
 
 Copyright Notice
 
@@ -52,10 +53,9 @@ Copyright Notice
 
 
 
-
-Bellis & Abley          Expires 5 September 2024                [Page 1]
+Bellis & Abley          Expires 30 November 2024                [Page 1]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One        March 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Bellis & Abley          Expires 5 September 2024                [Page 2]
+Bellis & Abley          Expires 30 November 2024                [Page 2]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One        March 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
 
 
 2.  Terminology used in this document
@@ -165,9 +165,9 @@ Internet-Draft    In the DNS, QDCOUNT is (usually) One        March 2024
 
 
 
-Bellis & Abley          Expires 5 September 2024                [Page 3]
+Bellis & Abley          Expires 30 November 2024                [Page 3]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One        March 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
 
 
 7.  Acknowledgements
@@ -221,9 +221,9 @@ Internet-Draft    In the DNS, QDCOUNT is (usually) One        March 2024
 
 
 
-Bellis & Abley          Expires 5 September 2024                [Page 4]
+Bellis & Abley          Expires 30 November 2024                [Page 4]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One        March 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
 
 
    [RFC7873]  Eastlake 3rd, D. and M. Andrews, "Domain Name System (DNS)
@@ -259,9 +259,9 @@ A.1.  OPCODE = 0 (QUERY) and 1 (IQUERY)
 
    The only documented exceptions within [RFC1035] relate to the IQuery
    Opcode, where the request has "an empty question section" (QDCOUNT =
-   0), and "zero, one, or multiple domain names for the specified
-   resource as QNAMEs in the question section".  The IQuery OpCode was
-   made obsolete in [RFC3425].
+   0), and the response has "zero, one, or multiple domain names for the
+   specified resource as QNAMEs in the question section".  The IQuery
+   OpCode was made obsolete in [RFC3425].
 
    In the absence of clearly expressed normative requirements, we rely
    on other text in [RFC1035] that makes use of the definite article or
@@ -277,9 +277,9 @@ A.1.  OPCODE = 0 (QUERY) and 1 (IQUERY)
 
 
 
-Bellis & Abley          Expires 5 September 2024                [Page 5]
+Bellis & Abley          Expires 30 November 2024                [Page 5]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One        March 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
 
 
       The question section contains fields that describe a question to a
@@ -333,9 +333,9 @@ A.4.  OPCODE = 6 (DNS Stateful Operations, DSO)
 
 
 
-Bellis & Abley          Expires 5 September 2024                [Page 6]
+Bellis & Abley          Expires 30 November 2024                [Page 6]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One        March 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
 
 
 A.5.  Conclusion
@@ -389,4 +389,4 @@ Authors' Addresses
 
 
 
-Bellis & Abley          Expires 5 September 2024                [Page 7]
+Bellis & Abley          Expires 30 November 2024                [Page 7]
