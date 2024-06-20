@@ -96,11 +96,12 @@ A DNS message with OPCODE = 0 (QUERY) and QDCOUNT > 1 MUST be treated
 as an incorrectly-formatted message.  The value of the RCODE parameter
 in the response message MUST be set to 1 (FORMERR).
 
-Firewalls that process DNS messages in order to eliminate unwanted
-traffic SHOULD treat messages with OPCODE = 0 and QDCOUNT > 1 as
-malformed traffic and return a FORMERR response as described above.
-Such firewalls MUST NOT treat messages with OPCODE = 0 and QDCOUNT = 0
-as malformed.  See Section 4 of {{?RFC8906}} for further guidance.
+Middleboxes (e.g. firewalls) that process DNS messages in order
+to eliminate unwanted traffic SHOULD treat messages with OPCODE =
+0 and QDCOUNT > 1 as malformed traffic and return a FORMERR response
+as described above.  Such firewalls MUST NOT treat messages with
+OPCODE = 0 and QDCOUNT = 0 as malformed.  See Section 4 of {{?RFC8906}}
+for further guidance.
 
 # Security Considerations
 
