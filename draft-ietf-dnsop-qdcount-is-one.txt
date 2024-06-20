@@ -4,13 +4,13 @@
 
 DNSOP Working Group                                            R. Bellis
 Internet-Draft                                                       ISC
-Updates: RFC1035 (if approved)                                  J. Abley
+Updates: 1035 (if approved)                                     J. Abley
 Intended status: Standards Track                              Cloudflare
-Expires: 30 November 2024                                    29 May 2024
+Expires: 22 December 2024                                   20 June 2024
 
 
                   In the DNS, QDCOUNT is (usually) One
-                   draft-ietf-dnsop-qdcount-is-one-03
+                   draft-ietf-dnsop-qdcount-is-one-04
 
 Abstract
 
@@ -34,7 +34,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 November 2024.
+   This Internet-Draft will expire on 22 December 2024.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Bellis & Abley          Expires 30 November 2024                [Page 1]
+Bellis & Abley          Expires 22 December 2024                [Page 1]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One         June 2024
 
 
 Table of Contents
@@ -83,7 +83,7 @@ Table of Contents
 
    The DNS protocol [RFC1034][RFC1035] includes a parameter QDCOUNT in
    the DNS message header, whose value is specified to mean the number
-   of questions in the Question Section of a message.
+   of questions in the Question Section of a DNS message.
 
    In a general sense it seems perfectly plausible for the QDCOUNT
    parameter, an unsigned 16-bit value, to take a considerable range of
@@ -100,7 +100,7 @@ Table of Contents
    requirements for DNS queries that naturally constrain the allowable
    values of QDCOUNT; and we update the DNS base specification to
    clarify the allowable values of the QDCODE parameter in the specific
-   case of DNS messages with OPCODE = 0 (QUERY).
+   case of DNS messages with OPCODE = 0.
 
 
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Bellis & Abley          Expires 30 November 2024                [Page 2]
+Bellis & Abley          Expires 22 December 2024                [Page 2]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One         June 2024
 
 
 2.  Terminology used in this document
@@ -127,25 +127,26 @@ Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
    A brief summary of the guidance provided in the existing DNS
    specification for the use of QDCOUNT can be found in Appendix A.
    While the specification is clear in many cases, in the specific case
-   of OPCODE = 0 (QUERY) there is some ambiguity which this document
-   aims to eliminate.
+   of OPCODE = 0 there is some ambiguity which this document aims to
+   eliminate.
 
 4.  Updates to RFC 1035
 
-   A DNS message with OPCODE = 0 (QUERY) MUST NOT include a QDCOUNT
-   parameter whose value is greater than 1.  It follows that the
-   Question Section of a DNS message with OPCODE = 0 MUST NOT contain
-   more than one question.
+   A DNS message with OPCODE = 0 MUST NOT include a QDCOUNT parameter
+   whose value is greater than 1.  It follows that the Question
+   Section of a DNS message with OPCODE = 0 MUST NOT contain more than
+   one question.
 
-   A DNS message with OPCODE = 0 (QUERY) and QDCOUNT > 1 MUST be treated
-   as an incorrectly-formatted message.  The value of the RCODE
-   parameter in the response message MUST be set to 1 (FORMERR).
+   A DNS message with OPCODE = 0 and QDCOUNT > 1 MUST be treated as an
+   incorrectly-formatted message.  The value of the RCODE parameter in
+   the response message MUST be set to 1 (FORMERR).
 
-   Firewalls that process DNS messages in order to eliminate unwanted
-   traffic SHOULD treat messages with OPCODE = 0 and QDCOUNT > 1 as
-   malformed traffic and return a FORMERR response as described above.
-   Such firewalls MUST NOT treat messages with OPCODE = 0 and QDCOUNT =
-   0 as malformed.  See Section 4 of [RFC8906] for further guidance.
+   Middleboxes (e.g. firewalls) that process DNS messages in order to
+   eliminate unwanted traffic SHOULD treat messages with OPCODE = 0 and
+   QDCOUNT > 1 as malformed traffic and return a FORMERR response as
+   described above.  Such firewalls MUST NOT treat messages with OPCODE
+   = 0 and QDCOUNT = 0 as malformed.  See Section 4 of [RFC8906] for
+   further guidance.
 
 5.  Security Considerations
 
@@ -164,10 +165,9 @@ Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
 
 
 
-
-Bellis & Abley          Expires 30 November 2024                [Page 3]
+Bellis & Abley          Expires 22 December 2024                [Page 3]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One         June 2024
 
 
 7.  Acknowledgements
@@ -221,9 +221,9 @@ Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
 
 
 
-Bellis & Abley          Expires 30 November 2024                [Page 4]
+Bellis & Abley          Expires 22 December 2024                [Page 4]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One         June 2024
 
 
    [RFC7873]  Eastlake 3rd, D. and M. Andrews, "Domain Name System (DNS)
@@ -248,9 +248,9 @@ Appendix A.  Guidance for the use of QDCOUNT in the DNS Specification
 
 A.1.  OPCODE = 0 (QUERY) and 1 (IQUERY)
 
-   [RFC1035] significantly predates the use of normative requirements
-   keywords, and parts of it are consequently somewhat open to
-   interpretation.
+   [RFC1035] significantly predates the use of the normative
+   requirements keywords specified in BCP 14 [RFC2119] [RFC8174], and
+   parts of it are consequently somewhat open to interpretation.
 
    Section 4.1.2 ("Question section format") has this to say about
    QDCOUNT:
@@ -277,9 +277,9 @@ A.1.  OPCODE = 0 (QUERY) and 1 (IQUERY)
 
 
 
-Bellis & Abley          Expires 30 November 2024                [Page 5]
+Bellis & Abley          Expires 22 December 2024                [Page 5]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One         June 2024
 
 
       The question section contains fields that describe a question to a
@@ -293,12 +293,12 @@ Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
 
    DNS Cookies [RFC7873] in Section 5.4 allow a client to receive a
    valid Server Cookie without sending a specific question by sending a
-   Query packet (OpCode = 0) with QDCOUNT = 0, with the resulting
+   request (QR = 0) with OPCODE = 0 and QDCOUNT = 0, with the resulting
    response also containing no question.
 
    DNS Zone Transfer Protocol (AXFR) [RFC5936] in Section 2.2 allows an
    authoritative server optionally to send a response message (QR = 1)
-   to a standard AXFR query (OpCode = 0, QTYPE=252) with QDCOUNT = 0 in
+   to a standard AXFR query (OPCODE = 0, QTYPE=252) with QDCOUNT = 0 in
    the second or subsequent message of a multi-message response.
 
 A.2.  OPCODE = 4 (NOTIFY)
@@ -333,9 +333,9 @@ A.4.  OPCODE = 6 (DNS Stateful Operations, DSO)
 
 
 
-Bellis & Abley          Expires 30 November 2024                [Page 6]
+Bellis & Abley          Expires 22 December 2024                [Page 6]
 
-Internet-Draft    In the DNS, QDCOUNT is (usually) One          May 2024
+Internet-Draft    In the DNS, QDCOUNT is (usually) One         June 2024
 
 
 A.5.  Conclusion
@@ -389,4 +389,4 @@ Authors' Addresses
 
 
 
-Bellis & Abley          Expires 30 November 2024                [Page 7]
+Bellis & Abley          Expires 22 December 2024                [Page 7]
