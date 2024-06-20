@@ -1,7 +1,7 @@
 ---
 title: In the DNS, QDCOUNT is (usually) One
 docname: draft-ietf-dnsop-qdcount-is-one-04
-updates: RFC1035
+updates: 1035
 
 submissiontype: IETF
 ipr: trust200902
