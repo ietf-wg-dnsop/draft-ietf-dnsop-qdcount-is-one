@@ -50,7 +50,7 @@ allowed are encountered.
 
 The DNS protocol {{!RFC1034}}{{!RFC1035}} includes a parameter
 QDCOUNT in the DNS message header, whose value is specified to mean
-the number of questions in the Question Section of a message.
+the number of questions in the Question Section of a DNS message.
 
 In a general sense it seems perfectly plausible for the QDCOUNT
 parameter, an unsigned 16-bit value, to take a considerable range
