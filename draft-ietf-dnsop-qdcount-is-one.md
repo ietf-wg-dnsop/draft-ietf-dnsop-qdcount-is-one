@@ -80,10 +80,10 @@ in all capitals, as shown here.
 # QDCOUNT is (usually) One
 
 A brief summary of the guidance provided in the existing DNS
-specification for the use of QDCOUNT can be found in {{Survey}}.
-While the specification is clear in many cases, in the specific
-case of OPCODE = 0 there is some ambiguity which this document aims
-to eliminate.
+specification ({{!RFC1035}} and many other documents) for the use
+of QDCOUNT can be found in {{Survey}}.  While the specification is
+clear in many cases, in the specific case of OPCODE = 0 there is
+some ambiguity which this document aims to eliminate.
 
 # Updates to RFC 1035
 
