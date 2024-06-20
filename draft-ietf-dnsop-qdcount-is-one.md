@@ -132,9 +132,9 @@ of this guidance is collated below.
 
 ## OPCODE = 0 (QUERY) and 1 (IQUERY)
 
-{{!RFC1035}} significantly predates the use of normative requirements
-keywords, and parts of it are consequently somewhat open to
-interpretation.
+{{!RFC1035}} significantly predates the use of the normative
+requirements keywords specified in BCP 14 {{!RFC2119}} {{!RFC8174}},
+and parts of it are consequently somewhat open to interpretation.
 
 Section 4.1.2 ("Question section format") has this to say about
 QDCOUNT:
