@@ -67,7 +67,7 @@ specification; we provide a description of the semantic and practical
 requirements for DNS queries that naturally constrain the allowable
 values of QDCOUNT; and we update the DNS base specification to
 clarify the allowable values of the QDCODE parameter in the specific
-case of DNS messages with OPCODE = 0 (QUERY).
+case of DNS messages with OPCODE = 0.
 
 # Terminology used in this document
 
@@ -82,18 +82,18 @@ in all capitals, as shown here.
 A brief summary of the guidance provided in the existing DNS
 specification for the use of QDCOUNT can be found in {{Survey}}.
 While the specification is clear in many cases, in the specific
-case of OPCODE = 0 (QUERY) there is some ambiguity which this
-document aims to eliminate.
+case of OPCODE = 0 there is some ambiguity which this document aims
+to eliminate.
 
 # Updates to RFC 1035
 
-A DNS message with OPCODE = 0 (QUERY) MUST NOT include a QDCOUNT
-parameter whose value is greater than 1. It follows that the Question
-Section of a DNS message with OPCODE = 0 MUST NOT contain more than
-one question.
+A DNS message with OPCODE = 0 MUST NOT include a QDCOUNT parameter
+whose value is greater than 1. It follows that the Question Section
+of a DNS message with OPCODE = 0 MUST NOT contain more than one
+question.
 
-A DNS message with OPCODE = 0 (QUERY) and QDCOUNT > 1 MUST be treated
-as an incorrectly-formatted message.  The value of the RCODE parameter
+A DNS message with OPCODE = 0 and QDCOUNT > 1 MUST be treated as
+an incorrectly-formatted message.  The value of the RCODE parameter
 in the response message MUST be set to 1 (FORMERR).
 
 Middleboxes (e.g. firewalls) that process DNS messages in order
@@ -169,12 +169,12 @@ and in Section 4.1.1. ("Header section format"):
 
 DNS Cookies {{?RFC7873}} in Section 5.4 allow a client to receive
 a valid Server Cookie without sending a specific question by sending
-a Query packet (OpCode = 0) with QDCOUNT = 0, with the resulting
+a request (QR = 0) with OPCODE = 0 and QDCOUNT = 0, with the resulting
 response also containing no question.
 
 DNS Zone Transfer Protocol (AXFR) {{?RFC5936}} in Section 2.2 allows
 an authoritative server optionally to send a response message
-(QR = 1) to a standard AXFR query (OpCode = 0, QTYPE=252) with
+(QR = 1) to a standard AXFR query (OPCODE = 0, QTYPE=252) with
 QDCOUNT = 0 in the second or subsequent message of a multi-message
 response.
 
